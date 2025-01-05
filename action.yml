@@ -1,0 +1,23 @@
+name: "khulnasoft/python-publish-action"
+description: "Publish to KhulnaSoft's private repositories"
+inputs:
+  AWS_ACCESS_KEY_ID:
+    description: "AWS Access Key Id"
+    required: true
+  AWS_SECRET_ACCESS_KEY:
+    description: "AWS Secret Access"
+    required: true
+  AWS_SESSION_TOKEN:
+    description: "AWS Session Token"
+    required: true
+  FILES:
+    description: "Files to upload."
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.AWS_ACCESS_KEY_ID }}
+    - ${{ inputs.AWS_SECRET_ACCESS_KEY }}
+    - ${{ inputs.AWS_SESSION_TOKEN }}
+    - ${{ inputs.FILES }}
